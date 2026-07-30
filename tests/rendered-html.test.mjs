@@ -47,6 +47,8 @@ test("renders the complete portfolio", async () => {
   assert.match(html, /favicon-48\.png/);
   assert.match(html, /favicon\.png/);
   assert.match(html, /apple-touch-icon\.png/);
+  assert.match(html, /https:\/\/k-biwebsite\.vercel\.app/);
+  assert.doesNotMatch(html, /https:\/\/example\.com/);
   assert.doesNotMatch(html, /codex-preview/i);
   assert.doesNotMatch(html, /LINKEDIN_URL_BURAYA|INSTAGRAM_URL_BURAYA/);
 });

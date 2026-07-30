@@ -1,12 +1,10 @@
-const SITE_URL_PLACEHOLDER = "SITE_URL_BURAYA";
-
 export const siteConfig = {
   name: "Kubilay Kendirci",
   title: "Elektrik ve Elektronik Mühendisliği Öğrencisi",
   description:
     "Kubilay Kendirci'nin elektronik devreler, donanım geliştirme ve gömülü sistemler alanlarındaki çalışmalarını ve teknik becerilerini içeren kişisel portfolyo sitesi.",
   email: "kubilaykendirci2oo5149@gmail.com",
-  siteUrl: SITE_URL_PLACEHOLDER,
+  siteUrl: "https://k-biwebsite.vercel.app",
   social: {
     linkedin: "https://www.linkedin.com/in/kubilay-kendirci-a649531b3/",
     instagram: "https://www.instagram.com/kubilaykendirci/",
