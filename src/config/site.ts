@@ -8,7 +8,7 @@ export const siteConfig = {
   email: "kubilaykendirci2oo5149@gmail.com",
   siteUrl: SITE_URL_PLACEHOLDER,
   social: {
-    linkedin: "LINKEDIN_URL_BURAYA",
+    linkedin: "https://www.linkedin.com/in/kubilay-kendirci-a649531b3/",
     instagram: "https://www.instagram.com/kubilaykendirci/",
   },
 } as const;

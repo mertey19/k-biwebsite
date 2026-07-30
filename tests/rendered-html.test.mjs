@@ -35,6 +35,10 @@ test("renders the complete portfolio", async () => {
   assert.match(html, /Merhaba, ben/);
   assert.match(html, /Taşınabilir Hoparlör Tasarımı ve Geliştirilmesi/);
   assert.match(html, /kubilaykendirci2oo5149@gmail\.com/);
+  assert.match(
+    html,
+    /https:\/\/www\.linkedin\.com\/in\/kubilay-kendirci-a649531b3\//,
+  );
   assert.match(html, /https:\/\/www\.instagram\.com\/kubilaykendirci\//);
   assert.match(html, /İçeriğe geç/);
   assert.match(html, /og\.png/);
@@ -59,6 +63,7 @@ test("renders safe structured person data", async () => {
   );
   assert.equal(structuredData.email, "mailto:kubilaykendirci2oo5149@gmail.com");
   assert.deepEqual(structuredData.sameAs, [
+    "https://www.linkedin.com/in/kubilay-kendirci-a649531b3/",
     "https://www.instagram.com/kubilaykendirci/",
   ]);
   assert.deepEqual(Object.keys(structuredData).sort(), [
