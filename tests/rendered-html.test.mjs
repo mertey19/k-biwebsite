@@ -1,14 +1,20 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-async function render(path = "/") {
+async function render(path = "/", init = {}) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
+  const headers = new Headers(init.headers);
+
+  if (!headers.has("accept")) {
+    headers.set("accept", "text/html");
+  }
 
   return worker.fetch(
     new Request(`http://localhost${path}`, {
-      headers: { accept: "text/html" },
+      ...init,
+      headers,
     }),
     {
       ASSETS: {
@@ -81,4 +87,21 @@ test("renders safe structured person data", async () => {
     "name",
     "sameAs",
   ]);
+});
+
+test("rejects unsupported page methods before route handling", async () => {
+  const response = await render("/", {
+    method: "POST",
+    headers: {
+      "content-type": "text/plain;charset=UTF-8",
+      "next-action": "test",
+      rsc: "1",
+    },
+    body: "{}",
+  });
+
+  assert.equal(response.status, 405);
+  assert.equal(response.headers.get("allow"), "GET, HEAD");
+  assert.equal(response.headers.get("cache-control"), "no-store");
+  assert.deepEqual(await response.json(), { error: "Method Not Allowed" });
 });
