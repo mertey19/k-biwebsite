@@ -40,11 +40,20 @@ export const metadata: Metadata = {
     siteName: `${siteConfig.name} Portfolyo`,
     title: "Kubilay Kendirci | Elektrik ve Elektronik Mühendisliği",
     description: siteConfig.description,
+    images: [
+      {
+        url: "/og.png",
+        width: 1731,
+        height: 909,
+        alt: "Kubilay Kendirci portfolyo paylaşım görseli",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Kubilay Kendirci | Elektrik ve Elektronik Mühendisliği",
     description: siteConfig.description,
+    images: ["/og.png"],
   },
   icons: {
     icon: "/favicon.svg",

@@ -9,7 +9,7 @@ export const siteConfig = {
   siteUrl: SITE_URL_PLACEHOLDER,
   social: {
     linkedin: "LINKEDIN_URL_BURAYA",
-    instagram: "INSTAGRAM_URL_BURAYA",
+    instagram: "https://www.instagram.com/kubilaykendirci/",
   },
 } as const;
 

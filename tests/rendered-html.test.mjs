@@ -35,7 +35,9 @@ test("renders the complete portfolio", async () => {
   assert.match(html, /Merhaba, ben/);
   assert.match(html, /Taşınabilir Hoparlör Tasarımı ve Geliştirilmesi/);
   assert.match(html, /kubilaykendirci2oo5149@gmail\.com/);
+  assert.match(html, /https:\/\/www\.instagram\.com\/kubilaykendirci\//);
   assert.match(html, /İçeriğe geç/);
+  assert.match(html, /og\.png/);
   assert.doesNotMatch(html, /codex-preview/i);
   assert.doesNotMatch(html, /LINKEDIN_URL_BURAYA|INSTAGRAM_URL_BURAYA/);
 });
@@ -56,11 +58,15 @@ test("renders safe structured person data", async () => {
     "Elektrik ve Elektronik Mühendisliği Öğrencisi",
   );
   assert.equal(structuredData.email, "mailto:kubilaykendirci2oo5149@gmail.com");
+  assert.deepEqual(structuredData.sameAs, [
+    "https://www.instagram.com/kubilaykendirci/",
+  ]);
   assert.deepEqual(Object.keys(structuredData).sort(), [
     "@context",
     "@type",
     "email",
     "jobTitle",
     "name",
+    "sameAs",
   ]);
 });
