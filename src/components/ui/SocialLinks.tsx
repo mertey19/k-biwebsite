@@ -1,3 +1,6 @@
+import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import type { IconType } from "react-icons";
+
 import { getSafeSocialUrl, type SocialPlatform } from "@/src/config/site";
 
 interface SocialLinksProps {
@@ -6,11 +9,12 @@ interface SocialLinksProps {
 }
 
 const socialItems: Array<{
+  icon: IconType;
   label: string;
   platform: SocialPlatform;
 }> = [
-  { label: "LinkedIn", platform: "linkedin" },
-  { label: "Instagram", platform: "instagram" },
+  { icon: FaLinkedinIn, label: "LinkedIn", platform: "linkedin" },
+  { icon: FaInstagram, label: "Instagram", platform: "instagram" },
 ];
 
 export function SocialLinks({
@@ -19,16 +23,14 @@ export function SocialLinks({
 }: SocialLinksProps) {
   return (
     <div className={`social-links ${className}`} aria-label="Sosyal medya">
-      {socialItems.map(({ label, platform }) => {
+      {socialItems.map(({ icon: Icon, label, platform }) => {
         const href = getSafeSocialUrl(platform);
         const content = (
           <>
-            <span
+            <Icon
               aria-hidden="true"
-              className={`social-glyph social-glyph--${platform}`}
-            >
-              {platform === "linkedin" ? "in" : <i />}
-            </span>
+              className={`social-icon social-icon--${platform}`}
+            />
             {showLabels ? (
               <span>{label}</span>
             ) : (
@@ -39,7 +41,7 @@ export function SocialLinks({
 
         return href ? (
           <a
-            className="social-link"
+            className={`social-link social-link--${platform}`}
             href={href}
             key={platform}
             rel="noopener noreferrer"

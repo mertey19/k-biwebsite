@@ -39,6 +39,7 @@ test("renders the complete portfolio", async () => {
     html,
     /https:\/\/www\.linkedin\.com\/in\/kubilay-kendirci-a649531b3\//,
   );
+  assert.match(html, /class="social-icon social-icon--linkedin"/);
   assert.match(html, /https:\/\/www\.instagram\.com\/kubilaykendirci\//);
   assert.match(html, /İçeriğe geç/);
   assert.match(html, /og\.png/);
